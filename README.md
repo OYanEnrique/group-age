@@ -1,33 +1,33 @@
-# group-age
-A Python script that analyzes data from a group of 4 people to calculate the average age, find the oldest man, and count how many women are under 20.
+# 📊 Group Data Analyzer
 
-# 📊 People Group Analyzer
+This is a command-line Python program that continuously collects and analyzes data from a group of people. The user can enter data for as many people as they wish and then see the final statistical results.
 
-This is a command-line Python program that collects and analyzes data from a group of four people. At the end, it provides three statistical insights about the group.
+The script repeatedly asks for the name, age, and gender of each person. After the user decides to stop, the program calculates the group's average age, the total number of adults (18+), the total number of men, and the total number of women aged 20 or younger.
 
-The script asks for the name, age, and sex of each person. During the iterations, it calculates the group's average age, identifies the name of the oldest man, and counts the number of women under 20 years old. This project demonstrates the ability to process multiple data points within a loop and apply complex conditional logic.
+## Features
+
+* **Flexible Data Entry**: Unlike the previous version, there is no limit to the number of people you can add.
+* **User-Controlled Loop**: The program will ask if you want to continue after each entry, giving you full control.
+* **Multiple Statistics**: Provides a summary of the group's demographics upon completion.
 
 ## How to Use
 
 1.  Make sure you have Python installed on your system.
-2.  Save the code as a `.py` file (e.g., `group_age.py`).
-3.  Open your terminal or command prompt.
-4.  Run the script with the following command:
+2.  Save the code as a `.py` file (e.g., `group_analyzer.py`).
+3.  Run the script from your terminal:
     ```sh
-    python group_age.py
+    python group_analyzer.py
     ```
-5.  The program will ask for the name, age, and sex (M/F) of 4 people. Enter the data for each person when prompted.
-6.  After entering the data for the fourth person, the program will display the calculated statistics.
+4.  The program will ask for the name, age, and gender of the first person.
+5.  After each person's data is entered, you will be asked `Continue? [Y or N]`.
+6.  Enter `Y` to add another person or `N` to stop and see the results.
+7.  Once you enter `N`, the program will display the final calculated statistics.
 
 ## Program Logic
 
-* **Data Collection:** A `for` loop with `range(0, 4)` is used to ensure data from exactly four people is collected. The `.strip()` function is used to remove any unnecessary whitespace from the beginning or end of the text inputs.
-* **Average Age Calculation:** A `sum_age` variable accumulates the age of each person. After the loop, the average is calculated by dividing `sum_age` by 4.
-* **Finding the Oldest Man:**
-    * Inside the loop, the program checks if the sex is 'M'.
-    * If it is, it compares the current person's age with the value stored in `age_older_man`.
-    * If the current age is greater, the `age_older_man` and `name_older_man` variables are updated with the current person's data.
-* **Counting Young Women:**
-    * The program checks if the sex is 'F' **and** if the age is less than 20.
-    * If both conditions are true, the `total_young_woman` counter is incremented.
-* **Final Results:** At the end of the four iterations, the program prints the three calculated results.
+* **Data Collection**: A `while True` loop is used for continuous data entry.
+* **Loop Control**: The loop breaks when the user inputs 'N' to the "Continue?" prompt.
+* **Calculations**:
+    * Counters are used to track the number of adults (`age >= 18`), men (`gender == 'M'`), and young women (`gender == 'F' and age <= 20`).
+    * The total age and total number of people are summed up with each iteration to calculate the average age at the end.
+* **Final Results**: After the loop terminates, the program prints a formatted string containing all the calculated results.
