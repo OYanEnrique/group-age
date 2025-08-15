@@ -1,28 +1,32 @@
-#Group Age
+# Group Age v2
 
-sum_age = 0
-age_older_man = 0
-name_older_man = ''
-total_young_woman = 0
+print('=-' * 30)
 
-for people in range (0, 4):
-	name = input('Enter a name:').strip()
-	age = int(input('Enter a age:'))
-	sex = input('Enter M for male or F for female: ').strip().upper()
+print('Age Verification')
+
+adults = men = woman = sum_age = sum_name = 0
+ask_continue = 'Y'
+
+while True:
+	name=input('Enter your name:\n')
+	age = int(input('Enter your age:\n'))
+	gender = input('Enter your gender:\n').strip().upper()[0]
 	
+	if age >= 18:
+		adults += 1
+	if gender == 'M':
+		men += 1
+	elif gender == 'F' and age <= 20:
+		woman += 1
 	sum_age += age
+	sum_name +=1
+	average = sum_age / sum_name
 	
-	if sex == 'M':
-		if age > age_older_man:
-			age_older_man = age
-			name_older_man = name
+	ask_continue = input('Continue? [Y or N]').strip().upper()[0]
+	if ask_continue == 'N':
+		print('Program closed successfully\n')
+		break
 			
-	elif sex == 'F' and age < 20:
-		total_young_woman += 1
-		
-average=sum_age / 4
-print(f'The average age is: {average}')
-print(f'The name of the older man is: {name_older_man}')
-print(f'The total number of young woman is: {total_young_woman}')
-		
-		
+print(f'Results: There are {adults} adults, {men} men and {woman} women under the age of 20, the average age was {average}!')
+
+print('=-' * 30)
